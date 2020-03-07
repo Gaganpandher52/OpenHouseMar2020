@@ -116,37 +116,44 @@ class CommunityDisplay extends React.Component<{}, any> {
         .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
     );
   }
+
   render() {
     const {communityNames, communityPrices, errors, isLoaded} = this.state;
+
+    //*** handles network errors and display message  ****//
     if(errors){
-      return <h3 style={{color:'white', textAlign:'center'}}> *** Sorry! There seems to be something Wrong on our End ***</h3>
+      return (
+          <h3 style={{color:'white', textAlign:'center'}}> 
+          *** Sorry! There seems to be something Wrong on our End ***
+          </h3>
+      )
     }
+
+    //*** handles on no info avai from the api  ****//
     if(communityNames.length === 0 || communityPrices.length === 0   ){
       return (
         <h4 style={{color:'white', textAlign:'center'}}> Sorry, Currenly no home to view</h4>
         );
     }
+
+    //*** maps the main container  ***//
     if(communityNames && communityPrices){
       return (<div>
-              <p className="name-items">
-                {this.state.communityNames.map((name:any) => (
-                  <p key={name}>
-                    <div className="new-container">
-                      {
-                        <img
-                        src={name.imgUrl === "" ? defaulImage : name.imgUrl}
-                        ></img>
-                      }
-                      <div className="text-block">
-                        <h4 style={{background:'black',color:'white'}}>{name.name}</h4>
-                        <h5 style={{background:'black',color:'white'}}>Average Price {this.returnSpecificPrice(name.id)}</h5>
-                      </div>
-                    </div>
-                  </p>
-                ))}
-              </p>
-            </div>
-            )
+        <p className="name-items">
+          {this.state.communityNames.map((name:any) => (
+            <p key={name}>
+              <div className="new-container">
+                {<img src={name.imgUrl === "" ? defaulImage : name.imgUrl}></img>}
+                  <div className="text-block">
+                    <h4 style={{background:'black',color:'white'}}>{name.name}</h4>
+                    <h5 style={{background:'black',color:'white'}}>Average Price {this.returnSpecificPrice(name.id)}</h5>
+                  </div>
+              </div>
+            </p>
+          ))}
+        </p>
+      </div>
+      )
     }
   }
 }
