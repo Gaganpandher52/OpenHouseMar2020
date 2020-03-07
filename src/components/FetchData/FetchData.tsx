@@ -1,13 +1,21 @@
 import * as React from "react";
 import CommunityDisplay from '../communities/CommunityDisplay'
 
-class FetchData extends React.Component<{}, any> {
+interface props {
+  communityNames: Array<any>,
+  communityPrices: Array<any>,
+  errors: boolean,
+  loadInfo: boolean
+
+}
+
+class FetchData extends React.Component<{}, props> {
   constructor(props:{}){
     super(props);
     this.state = {
       communityNames: [],
       communityPrices: [],
-      errors: null,
+      errors: false,
       loadInfo: false
     }
   }
@@ -20,10 +28,9 @@ class FetchData extends React.Component<{}, any> {
 
     this.CommunityDataFetch({requestedData: requestedData})
     this.PriceDataFetch({requestedData: requestedData})
-
   }
 
-  CommunityDataFetch = ({requestedData}:{requestedData:any}) =>{
+  CommunityDataFetch = ({requestedData,}:{requestedData:any}) =>{
     fetch("https://a18fda49-215e-47d1-9dc6-c6136a04a33a.mock.pstmn.io/communities", requestedData)
       .then(response => {
         this.setState({
@@ -39,7 +46,7 @@ class FetchData extends React.Component<{}, any> {
       .catch(error => {
         console.log('error', error);
         this.setState({
-          error: true
+          errors: true
         })
       });
   }
@@ -60,17 +67,23 @@ class FetchData extends React.Component<{}, any> {
       .catch(error => {
         console.log('error', error);
         this.setState({
-          error: true
+          errors: true
         })
       });
   }
-
-
+  
 
   render() {
+    interface props {
+      communityNames: Array<any>,
+      communityPrices: Array<any>,
+      errors: boolean,
+      loadInfo: boolean
+    
+    }
     return (
       <div>
-        <CommunityDisplay />
+        <CommunityDisplay/>
         
       </div>
     );
