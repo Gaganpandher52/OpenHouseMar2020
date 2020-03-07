@@ -95,15 +95,15 @@ class CommunityDisplay extends React.Component<{}, any> {
               });
             } //if
           }) //nested
-        ); //forEach
+      ); //forEach
 
-        //this forEach compare the incoming id with stored in initial State
-        initialState.forEach(i => {
-          if (incoming === i.id) {
-            prices.push(i.price);
-          }
-        });
-      }
+      //this forEach compare the incoming id with stored in initial State
+      initialState.forEach(i => {
+        if (incoming === i.id) {
+          prices.push(i.price);
+        }
+      });
+    }
       /* return the price. Uses reduce to sum the array and tofixed and else for easy readability*/
     if (prices.length === 0) {
       return " Coming Soon";
@@ -118,7 +118,7 @@ class CommunityDisplay extends React.Component<{}, any> {
   }
 
   render() {
-    const {communityNames, communityPrices, errors, isLoaded} = this.state;
+    const {communityNames, communityPrices, errors} = this.state;
 
     //*** handles network errors and display message  ****//
     if(errors){
@@ -130,9 +130,9 @@ class CommunityDisplay extends React.Component<{}, any> {
     }
 
     //*** handles on no info avai from the api  ****//
-    if(communityNames.length === 0 || communityPrices.length === 0   ){
+    if(communityNames.length === 0 || communityPrices.length === 0){
       return (
-        <h4 style={{color:'white', textAlign:'center'}}> Sorry, Currenly no home to view</h4>
+        <h4 style={{color:'white', textAlign:'center'}}> Sorry, Currently no home to view</h4>
         );
     }
 
@@ -146,7 +146,7 @@ class CommunityDisplay extends React.Component<{}, any> {
                 {<img src={name.imgUrl === "" ? defaulImage : name.imgUrl}></img>}
                   <div className="text-block">
                     <h4>{name.name}</h4>
-                    <h5>Average Price {this.returnSpecificPrice(name.id)}</h5>
+                    <h5>Average Price: {this.returnSpecificPrice(name.id)}</h5>
                   </div>
               </div>
             </p>
@@ -155,7 +155,7 @@ class CommunityDisplay extends React.Component<{}, any> {
       </div>
       )
     }
-  }
+  }//render
 }
 
 export default CommunityDisplay;
