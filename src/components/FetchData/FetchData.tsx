@@ -1,7 +1,7 @@
 import * as React from "react";
+import CommunityDisplay from '../communities/CommunityDisplay'
 
-class CommunityDisplay extends React.Component<{}, any> {
-
+class FetchData extends React.Component<{}, any> {
   constructor(props:{}){
     super(props);
     this.state = {
@@ -14,8 +14,8 @@ class CommunityDisplay extends React.Component<{}, any> {
 
   componentDidMount(){
     
-
   }
+
 
 
   render() {
@@ -27,4 +27,4 @@ class CommunityDisplay extends React.Component<{}, any> {
   }
 }
 
-export default CommunityDisplay;
+export default FetchData;
