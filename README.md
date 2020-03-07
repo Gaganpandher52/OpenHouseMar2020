@@ -1,10 +1,14 @@
 OpenHouse.Ai. This project Retrives data from the api and displays Geographical Communities around the city.
 
-## Clone the repo
+### Clone the repo
 
-### `cd Client && run npm install`
+### Install Dependencies
 
-### `npm start`
+#### `cd Client && run npm install`
+
+
+### Run Project
+#### `npm start`
 
 
 
