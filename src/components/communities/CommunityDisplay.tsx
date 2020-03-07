@@ -145,8 +145,8 @@ class CommunityDisplay extends React.Component<{}, any> {
               <div className="new-container">
                 {<img src={name.imgUrl === "" ? defaulImage : name.imgUrl}></img>}
                   <div className="text-block">
-                    <h4 style={{background:'black',color:'white'}}>{name.name}</h4>
-                    <h5 style={{background:'black',color:'white'}}>Average Price {this.returnSpecificPrice(name.id)}</h5>
+                    <h4>{name.name}</h4>
+                    <h5>Average Price {this.returnSpecificPrice(name.id)}</h5>
                   </div>
               </div>
             </p>
